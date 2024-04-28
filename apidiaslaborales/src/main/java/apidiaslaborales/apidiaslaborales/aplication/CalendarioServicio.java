@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 import apidiaslaborales.apidiaslaborales.core.Dto.CalendarioDto;
+import apidiaslaborales.apidiaslaborales.core.Dto.FestivosDto;
 import apidiaslaborales.apidiaslaborales.core.entities.Calendario;
 import apidiaslaborales.apidiaslaborales.core.repository.ICalendarioRepository;
 import apidiaslaborales.apidiaslaborales.core.service.ICalendarioService;
@@ -21,27 +22,38 @@ public class CalendarioServicio implements ICalendarioService {
     }
 
     @Override
-    public List<CalendarioDto> obtenerFestivos(int año) {
-        List<CalendarioDto> calendarioDtos = new ArrayList<>();
-        for (int month = 1; month <= 12; month++) {
-            CalendarioDto calendarioDto = calendarioCliente.obtenerFestivos(año);
-            if (calendarioDto != null) {
-                calendarioDtos.add(calendarioDto);
-            }
+    public List<FestivosDto> obtenerFestivos(int año) {
+
+        return calendarioCliente.obtenerFestivo(año);
+    }
+
+    // List<FestivosDto> festivosDto = new ArrayList<>();
+    // for (int month = 1; month <= 12; month++) {
+    // FestivosDto festivosyear = calendarioCliente.obtenerFestivos(año);
+    // if (festivosDto != null) {
+    // festivosDto.add(festivosyear);
+    // }
+    // }
+    // return festivosDto;
+    @Override
+    public Calendario agregar(Calendario calendario) {
+        calendario.setId(0);
+        return repository.save(calendario);
+    }
+
+    @Override
+    public boolean eliminar(Long id) {
+        try {
+            repository.deleteById(id);
+            return true;
+        } catch (Exception ex) {
+            return false;
         }
-        return calendarioDtos;
     }
 
     @Override
-    public List<CalendarioDto> buscar(int año) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscar'");
-    }
-
-    @Override
-    public CalendarioDto addCalendario(CalendarioDto calendarioDto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addCalendario'");
+    public List<CalendarioDto> listar() {
+        throw new UnsupportedOperationException("Unimplemented method 'listar'");
     }
 
 }

@@ -2,15 +2,13 @@ package apidiaslaborales.apidiaslaborales.presentation;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import apidiaslaborales.apidiaslaborales.core.Dto.CalendarioDto;
+import apidiaslaborales.apidiaslaborales.core.Dto.FestivosDto;
 import apidiaslaborales.apidiaslaborales.core.entities.Calendario;
 import apidiaslaborales.apidiaslaborales.core.service.ICalendarioService;
 
@@ -23,15 +21,27 @@ public class CalendarioController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/listar/{año}", method = RequestMethod.GET)
-    public List<CalendarioDto> buscar(@PathVariable int año) {
-        return service.obtenerFestivos(año);
+    @RequestMapping(value = "/listar/{year}", method = RequestMethod.GET)
+    public List<FestivosDto> buscar(@PathVariable int year) {
+        var festivosano = service.obtenerFestivos(year);
+        return festivosano;
+        // return service.listar();
+
     }
 
-    @PostMapping("/calendario")
-    public ResponseEntity<?> addCalendario(@RequestBody CalendarioDto calendarioDto) {
-        CalendarioDto nuevoCalendario = service.addCalendario(calendarioDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(nuevoCalendario);
+    // @RequestMapping(value = "/listar", method = RequestMethod.GET)
+    // public List<Calendario> listar() {
+    // return service.listar();
+    // }
+
+    @RequestMapping(value = "/agregar", method = RequestMethod.POST)
+    public Calendario crear(@RequestBody Calendario calendario) {
+        return service.agregar(calendario);
+    }
+
+    @RequestMapping(value = "/eliminar/{id}", method = RequestMethod.DELETE)
+    public boolean eliminar(@PathVariable long id) {
+        return service.eliminar(id);
     }
 
 }
