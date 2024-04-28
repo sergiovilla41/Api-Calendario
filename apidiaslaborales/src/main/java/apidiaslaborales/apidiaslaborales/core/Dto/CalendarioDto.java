@@ -10,8 +10,8 @@ public class CalendarioDto {
     private Tipo tipo;
     private String descripcion;
 
-    public CalendarioDto(Long id, Date fecha, Tipo tipo, String descripcion) {
-        this.id = id;
+    public CalendarioDto(Date fecha, Tipo tipo, String descripcion) {
+
         this.fecha = fecha;
         this.tipo = tipo;
         this.descripcion = descripcion;

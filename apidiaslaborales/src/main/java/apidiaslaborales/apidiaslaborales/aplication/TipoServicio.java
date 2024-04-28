@@ -25,7 +25,8 @@ public class TipoServicio implements ITipoService {
     @Override
     public Tipo obtener(Long id) {
 
-        throw new UnsupportedOperationException("Unimplemented method 'obtener'");
+        var tipo = repository.findById(id);
+        return tipo.isEmpty() ? null : tipo.get();
     }
 
     @Override

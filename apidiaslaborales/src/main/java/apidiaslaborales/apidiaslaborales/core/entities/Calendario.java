@@ -34,9 +34,9 @@ public class Calendario {
     public Calendario() {
     }
 
-    public Calendario(long id, Date fecha, apidiaslaborales.apidiaslaborales.core.entities.Tipo tipo,
+    public Calendario(Date fecha, apidiaslaborales.apidiaslaborales.core.entities.Tipo tipo,
             String descripcion) {
-        this.id = id;
+
         this.fecha = fecha;
         Tipo = tipo;
         this.descripcion = descripcion;
