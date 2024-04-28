@@ -74,4 +74,9 @@ public class Calendario {
         this.descripcion = descripcion;
     }
 
+    @SuppressWarnings("deprecation")
+    public int getYear() {
+        return fecha.getYear() + 1900;
+    }
+
 }

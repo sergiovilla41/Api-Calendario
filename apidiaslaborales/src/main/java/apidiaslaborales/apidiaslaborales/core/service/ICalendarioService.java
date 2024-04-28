@@ -3,14 +3,15 @@ package apidiaslaborales.apidiaslaborales.core.service;
 import java.util.List;
 
 import apidiaslaborales.apidiaslaborales.core.Dto.CalendarioDto;
-import apidiaslaborales.apidiaslaborales.core.Dto.FestivosDto;
 import apidiaslaborales.apidiaslaborales.core.entities.Calendario;
 
 public interface ICalendarioService {
 
-    public List<FestivosDto> obtenerFestivos(int year);
+    public List<Calendario> listar();
 
-    public List<CalendarioDto> listar();
+    public List<Calendario> listarPorAño(int año);
+
+    public List<CalendarioDto> obtenerFestivos(int year);
 
     public Calendario agregar(Calendario calendario);
 
