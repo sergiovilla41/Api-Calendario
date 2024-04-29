@@ -122,9 +122,6 @@ public class CalendarioServicio implements ICalendarioService {
             Date date = convertToDateViaSqlDate(fecha);
             Date fechaFestivo = convertToDateViaSqlDate(
                     festivo.getFecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(1));
-            System.out.println("este es fecha: " + fecha);
-            System.out.println("este es date: " + date);
-            System.out.println("fecha festivo: " + fechaFestivo);
             if (date.equals(fechaFestivo)) {
                 return true;
             }
