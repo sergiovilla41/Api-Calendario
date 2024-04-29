@@ -22,10 +22,8 @@ const { check } = require('express-validator');
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 Festivos:
- *                   type: array
+ *                *                
+ *                  
  *                   description: Lista de festivos encontrados para el año especificado.
  *                   items:
  *                     type: object
@@ -44,7 +42,7 @@ const { check } = require('express-validator');
  *       '500':
  *         description: Error interno del servidor.
  */
-router.get('/listar-festivos/:year', festivoController.listarFestivos); // Define la ruta y el controlador para manejar la solicitud GET
+router.get('/listar-festivos/:year', festivoController.listarFestivos);
 
 /**
  * @swagger

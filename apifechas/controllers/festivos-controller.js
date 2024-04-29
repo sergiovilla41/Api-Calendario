@@ -109,11 +109,9 @@ exports.listarFestivos = async (req, res) => {
     festivosEncontrados = festivosEncontrados.sort((a, b) => new Date(a.Fecha) - new Date(b.Fecha));
 
     // Preparar la respuesta JSON
-    const respuesta = {
-      Festivos: festivosEncontrados
-    };
+    
 
-    res.json(respuesta);
+    res.json(festivosEncontrados);
   } catch (error) {
     console.error('Error al listar los festivos:', error);
     res.status(500).json({ error: 'Error interno del servidor', message: error.message });
