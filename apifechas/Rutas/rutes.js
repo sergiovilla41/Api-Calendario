@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const festivoController = require('../controllers/festivos-controller');
 const { check } = require('express-validator');
+
 /**
  * @swagger
  * /listar-festivos/{year}:
@@ -22,19 +23,17 @@ const { check } = require('express-validator');
  *         content:
  *           application/json:
  *             schema:
- *                *                
- *                  
- *                   description: Lista de festivos encontrados para el año especificado.
- *                   items:
- *                     type: object
- *                     properties:
- *                       Fecha:
- *                         type: string
- *                         format: date
- *                         description: Fecha del festivo en formato ISO (YYYY-MM-DD).
- *                       Nombre:
- *                         type: string
- *                         description: Nombre del festivo.
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   Fecha:
+ *                     type: string
+ *                     format: date
+ *                     description: Fecha del festivo en formato ISO (YYYY-MM-DD).
+ *                   Nombre:
+ *                     type: string
+ *                     description: Nombre del festivo.
  *       '400':
  *         description: La solicitud es inválida.
  *       '404':
@@ -132,6 +131,5 @@ router.get('/verificar-festivo/:year/:month/:day', [
  *         description: Error interno del servidor.
  */
 router.get('/semana-santa/:year', festivoController.obtenerInicioSemanaSanta);
-
 
 module.exports = router;

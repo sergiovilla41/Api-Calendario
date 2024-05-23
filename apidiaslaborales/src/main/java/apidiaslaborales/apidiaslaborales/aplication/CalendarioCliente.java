@@ -19,7 +19,7 @@ public class CalendarioCliente {
     private RestTemplate restTemplate;
 
     public CalendarioDto obtenerFestivosold(int año) {
-        String url = "http://localhost:3030/listar-festivos/" + año;
+        String url = "http://express:3030/listar-festivos/" + año;
         ResponseEntity<CalendarioDto> responseEntity = restTemplate.exchange(url,
                 HttpMethod.GET, null,
                 new ParameterizedTypeReference<CalendarioDto>() {
@@ -29,7 +29,7 @@ public class CalendarioCliente {
     }
 
     public List<FestivoDto> obtenerFestivos(int year) {
-        String url = "http://localhost:3030/listar-festivos/" + year;
+        String url = "http://express:3030/listar-festivos/" + year;
         ResponseEntity<List<FestivoDto>> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<FestivoDto>>() {
                 });
