@@ -2,6 +2,7 @@ const { MongoClient } = require('mongodb');
 
 // URL de conexión a MongoDB
 const uri = 'mongodb://mongodb:27017';
+// const uri = 'mongodb://localhost:27017';
 const dbName = 'festivos';
 
 // Opciones de configuración para la conexión a MongoDB

@@ -1,0 +1,64 @@
+.calendar-container {
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.filter-input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 200px;
+  font-size: 16px;
+}
+
+.month-container {
+  margin-bottom: 40px;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar-table th,
+.calendar-table td {
+  width: 14.28%;
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 10px;
+  vertical-align: top;
+}
+
+.weekend {
+  background-color: #d4f7d4;
+}
+
+.workday {
+  background-color: #d4e8f7;
+}
+
+.holiday {
+  background-color: #f7d4d4;
+}
+
+.no-calendars {
+  color: #e74c3c;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}

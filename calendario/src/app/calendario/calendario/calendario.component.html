@@ -1,0 +1,40 @@
+<div class="calendar-container">
+  <div class="filter-section">
+    <label for="yearFilter" class="filter-label">Filtrar por Año:</label>
+    <input type="number" id="yearFilter" class="filter-input" (input)="onYearFilterChange($event)" placeholder="Ingrese el año" />
+  </div>
+
+  <ng-container *ngIf="filteredCalendars | keyvalue">
+    <div *ngFor="let monthKey of monthsOrder" class="month-container">
+      <ng-container *ngIf="filteredCalendars[monthKey]">
+        <h2>{{ getMonthName(monthKey) }}</h2>
+        <table class="calendar-table">
+          <thead>
+            <tr>
+              <th *ngFor="let day of ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']">{{ day }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let week of getMonthDays(parseMonthKey(monthKey), filterYear!)">
+              <ng-container *ngFor="let date of week">
+                <td [ngClass]="getCalendarItemClass(findCalendarDay(filteredCalendars[monthKey], (date && date.getDate() === 1 ? 1 : date?.getDate()) ?? -1)!)">
+                  <div *ngIf="date && date.getFullYear() !== 1900; else emptyCell">
+                    <p>{{ date.getDate() }}</p>
+                    <p>{{ findCalendarDay(filteredCalendars[monthKey], date.getDate())?.tipo?.tipo || '' }}</p>
+                  </div>
+                  <ng-template #emptyCell>
+                    <p></p>
+                  </ng-template>
+                </td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+    </div>
+  </ng-container>
+
+  <ng-template #noCalendars>
+    <p class="no-calendars">No se encontraron calendarios para el año especificado.</p>
+  </ng-template>
+</div>

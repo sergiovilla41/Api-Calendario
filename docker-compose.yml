@@ -3,8 +3,8 @@ version: '3.8'
 services:
   express:
     build: 
-      context: ./apifechas # Ruta al directorio de contexto para el Dockerfile de Express
-      dockerfile: Dockerfile-express # Nombre del Dockerfile para Express
+      context: ./apifechas 
+      dockerfile: Dockerfile-express 
     ports:
       - "4040:3030"
     networks:
@@ -22,7 +22,6 @@ services:
       - redcalendario
     volumes:
       - ./apifechas/mongo-init:/docker-entrypoint-initdb.d
-      
 
   springboot:
     build: 
@@ -43,8 +42,8 @@ services:
 
   postgres:
     build: 
-      context: ./apidiaslaborales # Ruta al directorio de contexto para el Dockerfile de PostgreSQL
-      dockerfile: Dockerfile-postgres # Nombre del Dockerfile para PostgreSQL
+      context: ./apidiaslaborales 
+      dockerfile: Dockerfile-postgres 
     ports:
       - "5151:5432"
     networks:
@@ -53,6 +52,24 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: abc123456
       POSTGRES_DB: calendariolaboral
+
+  angular-app:
+    build: 
+      context: ./calendario 
+      dockerfile: Dockerfile-angular 
+    ports:
+      - "80:80"
+    networks:
+      - redcalendario
+    depends_on:
+      - springboot
+    environment:      
+      - EXPRESS_SERVICE_URL=http://springboot:8080
+    volumes:
+      - ./calendario:/app  
+
+
+  
 
 networks:
   redcalendario:
