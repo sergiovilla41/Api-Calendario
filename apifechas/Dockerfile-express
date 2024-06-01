@@ -1,5 +1,5 @@
 # Usar una imagen de Node.js como base
-FROM node:latest
+FROM node:21
 
 # Crear carpeta para la aplicación 
 WORKDIR /usr/src/app/
