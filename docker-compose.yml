@@ -53,20 +53,7 @@ services:
       POSTGRES_PASSWORD: abc123456
       POSTGRES_DB: calendariolaboral
 
-  angular-app:
-    build: 
-      context: ./calendario 
-      dockerfile: Dockerfile-angular 
-    ports:
-      - "80:80"
-    networks:
-      - redcalendario
-    depends_on:
-      - springboot
-    environment:      
-      - EXPRESS_SERVICE_URL=http://springboot:8080
-    volumes:
-      - ./calendario:/app  
+  
 
 networks:
   redcalendario:
