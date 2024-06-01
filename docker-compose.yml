@@ -68,9 +68,6 @@ services:
     volumes:
       - ./calendario:/app  
 
-
-  
-
 networks:
   redcalendario:
     driver: bridge
